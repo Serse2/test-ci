@@ -5,8 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: set upd node
+        uses: actions/setup-node@v3
         with:
           node-version: "14"
+      - name: get .npmrc
+        run: |
+          echo "::copying generanted .npmrc file in working directory::"
+          echo ${NPM_CONFIG_USERCONFIG}
+          cp ${NPM_CONFIG_USERCONFIG} .npmrc
       - run: npm install -g bats
       - run: bats -v
