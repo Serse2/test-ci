@@ -13,6 +13,8 @@ jobs:
         run: |
           echo "::copying generanted .npmrc file in working directory::"
           echo ${NPM_CONFIG_USERCONFIG}
+          echo "${NPM_CONFIG_USERCONFIG}"
+          echo "ciao"
           # cp ${NPM_CONFIG_USERCONFIG} .npmrc
       - run: npm install -g bats
       - run: bats -v
